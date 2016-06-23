@@ -4,6 +4,9 @@ import com.rea.robot.domain.Direction;
 import com.rea.robot.domain.Position;
 import com.rea.robot.domain.Robot;
 
+/**
+ * Report current position and direction to console
+ */
 public class ReportCommand implements Command{
     public void execute(Robot robot) {
         Position position = robot.getPosition();
