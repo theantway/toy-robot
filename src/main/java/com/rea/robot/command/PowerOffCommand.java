@@ -1,6 +1,6 @@
 package com.rea.robot.command;
 
-import com.rea.robot.Robot;
+import com.rea.robot.domain.Robot;
 
 /**
  * This command indicates we need to POWER OFF robot

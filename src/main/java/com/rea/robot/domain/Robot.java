@@ -1,4 +1,4 @@
-package com.rea.robot;
+package com.rea.robot.domain;
 
 import com.rea.robot.command.Command;
 import com.rea.robot.command.PlaceCommand;

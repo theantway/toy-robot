@@ -1,6 +1,6 @@
 package com.rea.robot.command;
 
-import com.rea.robot.Robot;
+import com.rea.robot.domain.Robot;
 
 /**
  * Control the robot to turn right, the position keeps unchanged

@@ -1,6 +1,6 @@
 package com.rea.robot.command;
 
-import com.rea.robot.Robot;
+import com.rea.robot.domain.Robot;
 
 /**
  * All robot supported commands should implement this interface

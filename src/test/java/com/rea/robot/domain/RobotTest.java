@@ -1,4 +1,4 @@
-package com.rea.robot;
+package com.rea.robot.domain;
 
 import com.rea.robot.command.LeftCommand;
 import com.rea.robot.command.MoveCommand;

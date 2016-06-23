@@ -1,10 +1,10 @@
 package com.rea.robot.builder;
 
 
-import com.rea.robot.Direction;
-import com.rea.robot.Position;
-import com.rea.robot.Robot;
-import com.rea.robot.TableTop;
+import com.rea.robot.domain.Direction;
+import com.rea.robot.domain.Position;
+import com.rea.robot.domain.Robot;
+import com.rea.robot.domain.TableTop;
 import com.rea.robot.reader.CommandReader;
 
 public class RobotBuilder {

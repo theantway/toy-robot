@@ -1,4 +1,4 @@
-package com.rea.robot;
+package com.rea.robot.domain;
 
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;

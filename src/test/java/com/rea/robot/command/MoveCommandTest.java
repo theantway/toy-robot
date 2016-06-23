@@ -1,9 +1,9 @@
 package com.rea.robot.command;
 
-import com.rea.robot.Direction;
-import com.rea.robot.Position;
-import com.rea.robot.Robot;
-import com.rea.robot.TableTop;
+import com.rea.robot.domain.Direction;
+import com.rea.robot.domain.Position;
+import com.rea.robot.domain.Robot;
+import com.rea.robot.domain.TableTop;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 

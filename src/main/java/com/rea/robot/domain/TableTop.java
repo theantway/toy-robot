@@ -1,4 +1,4 @@
-package com.rea.robot;
+package com.rea.robot.domain;
 
 /**
  * A table top object has fixed size: width and length, the robot should not fall off the table top

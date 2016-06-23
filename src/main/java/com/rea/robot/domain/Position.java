@@ -1,4 +1,4 @@
-package com.rea.robot;
+package com.rea.robot.domain;
 
 /**
  * Position of the robot on table top, origin(0, 0) is the most SOUTH WEST corner
