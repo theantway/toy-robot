@@ -11,6 +11,7 @@ import static com.rea.robot.builder.RobotBuilder.aRobot;
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.nullValue;
 import static org.hamcrest.core.Is.is;
+import static org.unitils.reflectionassert.ReflectionAssert.assertReflectionEquals;
 
 @Test
 public class RobotTest {
@@ -84,7 +85,7 @@ public class RobotTest {
     }
 
     private void verifyPositionAndDirection(Robot robot, int x, int y, Direction direction) {
-        assertThat(robot.getPosition(), is(new Position(x, y)));
         assertThat(robot.getDirection(), is(direction));
+        assertReflectionEquals(robot.getPosition(), new Position(x, y));
     }
 }

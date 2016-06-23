@@ -75,8 +75,4 @@ public class Robot {
     public TableTop getTableTop() {
         return tableTop;
     }
-
-    public void setCommandReader(CommandReader commandReader) {
-        this.commandReader = commandReader;
-    }
 }

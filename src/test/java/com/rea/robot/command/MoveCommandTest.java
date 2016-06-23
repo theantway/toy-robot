@@ -10,6 +10,7 @@ import org.testng.annotations.Test;
 import static com.rea.robot.builder.RobotBuilder.aRobot;
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.core.Is.is;
+import static org.unitils.reflectionassert.ReflectionAssert.assertReflectionEquals;
 
 @Test
 public class MoveCommandTest {
@@ -31,18 +32,17 @@ public class MoveCommandTest {
 
         new MoveCommand().execute(robot);
 
-        assertThat(robot.getPosition(), is(new Position(newX, newY)));
         assertThat(robot.getDirection(), is(direction));
+        assertReflectionEquals(robot.getPosition(), new Position(newX, newY));
     }
 
     public void should_prevent_fall_off_table() {
-        Position originalPosition = new Position(4, 4);
         Robot robot = aRobot().withTableTop(new TableTop(5, 5))
-                .withPosition(originalPosition)
+                .withPosition(new Position(4, 4))
                 .withDirection(Direction.NORTH).build();
 
         new MoveCommand().execute(robot);
 
-        assertThat(robot.getPosition(), is(originalPosition));
+        assertReflectionEquals(robot.getPosition(), new Position(4, 4));
     }
 }
