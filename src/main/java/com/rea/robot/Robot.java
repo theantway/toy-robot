@@ -29,10 +29,6 @@ public class Robot {
         }
     }
 
-    public void executeCommand(Command command) {
-        command.execute(this);
-    }
-
     public Position getPosition() {
         return position;
     }
