@@ -1,1 +1,3 @@
-*.iml*.iml*.iml*.iml*.iml*.iml*.iml*.iml
+*.iml
+target
+.idea

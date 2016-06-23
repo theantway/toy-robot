@@ -1,5 +1,6 @@
 package com.rea.robot;
 
+import com.rea.robot.command.MoveCommand;
 import com.rea.robot.command.PlaceCommand;
 import org.testng.annotations.Test;
 
@@ -13,8 +14,21 @@ public class RobotTest {
 
         robot.executeCommand(new PlaceCommand(0, 0, Direction.NORTH));
 
-        assertThat(robot.getPosition().getX(), is(0));
-        assertThat(robot.getPosition().getY(), is(0));
-        assertThat(robot.getDirection(), is(Direction.NORTH));
+        verifyPositionAndDirection(robot, 0, 0, Direction.NORTH);
+    }
+
+    public void should_able_to_move_after_placed_on_tabletop() {
+        Robot robot = new Robot();
+
+        robot.executeCommand(new PlaceCommand(0, 0, Direction.NORTH));
+        robot.executeCommand(new MoveCommand());
+
+        verifyPositionAndDirection(robot, 0, 1, Direction.NORTH);
+    }
+
+    private void verifyPositionAndDirection(Robot robot, int x, int y, Direction direction) {
+        assertThat(robot.getPosition().getX(), is(x));
+        assertThat(robot.getPosition().getY(), is(y));
+        assertThat(robot.getDirection(), is(direction));
     }
 }
