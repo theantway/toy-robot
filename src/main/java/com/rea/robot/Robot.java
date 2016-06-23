@@ -10,8 +10,9 @@ import com.rea.robot.command.Command;
  * Created by wxu on 6/23/16.
  */
 public class Robot {
-    private Position position;
+    private Position position = Position.NullPosition;
     private Direction direction;
+    private TableTop tableTop;
 
     public void executeCommand(Command command) {
         command.execute(this);
@@ -21,7 +22,21 @@ public class Robot {
         return position;
     }
 
+    /**
+     * The Robot <b>SHOULD NOT</b> fall off the table top,
+     * caller of this method need to ensure the position is valid by tableTop.
+     *
+     * @param position new robot position, throws IllegalArgumentException if position not inside the tabletop
+     */
     public void setPosition(Position position) {
+        if (tableTop == null) {
+            throw new RuntimeException("Robot not associated with a tabletop");
+        }
+
+        if (!tableTop.isInTableArea(position)) {
+            throw new IllegalArgumentException("New position is outside the table top");
+        }
+
         this.position = position;
     }
 
@@ -31,5 +46,13 @@ public class Robot {
 
     public void setDirection(Direction direction) {
         this.direction = direction;
+    }
+
+    public void setTableTop(TableTop tableTop) {
+        this.tableTop = tableTop;
+    }
+
+    public TableTop getTableTop() {
+        return tableTop;
     }
 }

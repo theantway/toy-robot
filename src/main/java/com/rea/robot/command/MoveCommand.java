@@ -3,6 +3,8 @@ package com.rea.robot.command;
 import com.rea.robot.Direction;
 import com.rea.robot.Position;
 import com.rea.robot.Robot;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 /**
  * Move the robot one step towards the current direction.
@@ -10,8 +12,17 @@ import com.rea.robot.Robot;
  * Created by wxu on 6/23/16.
  */
 public class MoveCommand implements Command {
+    private static final Logger logger = LoggerFactory.getLogger(MoveCommand.class);
+
     public void execute(Robot robot) {
         Position newPosition = nextPosition(robot.getDirection(), robot.getPosition());
+
+        if (!robot.getTableTop().isInTableArea(newPosition))
+        {
+            logger.info("Ignored invalid position");
+            return;
+        }
+
         robot.setPosition(newPosition);
     }
 

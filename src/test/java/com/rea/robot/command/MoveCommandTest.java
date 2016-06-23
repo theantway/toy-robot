@@ -3,15 +3,15 @@ package com.rea.robot.command;
 import com.rea.robot.Direction;
 import com.rea.robot.Position;
 import com.rea.robot.Robot;
+import com.rea.robot.TableTop;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 
+import static com.rea.robot.builder.RobotBuilder.aRobot;
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.core.Is.is;
 
-/**
- * Created by wxu on 6/23/16.
- */
+@Test
 public class MoveCommandTest {
     @DataProvider(name = "positions")
     public Object[][] positions() {
@@ -25,15 +25,24 @@ public class MoveCommandTest {
 
     @Test(dataProvider = "positions")
     public void should_execute_command(int x, int y, Direction direction, int newX, int newY) {
-        Robot robot = new Robot();
-        robot.setPosition(new Position(x, y));
-        robot.setDirection(direction);
+        Robot robot = aRobot()
+                .withPosition(new Position(x, y))
+                .withDirection(direction).build();
 
         new MoveCommand().execute(robot);
 
-        Position newPosition = robot.getPosition();
-        assertThat(newPosition.getX(), is(newX));
-        assertThat(newPosition.getY(), is(newY));
+        assertThat(robot.getPosition(), is(new Position(newX, newY)));
         assertThat(robot.getDirection(), is(direction));
+    }
+
+    public void should_prevent_fall_off_table() {
+        Position originalPosition = new Position(4, 4);
+        Robot robot = aRobot().withTableTop(new TableTop(5, 5))
+                .withPosition(originalPosition)
+                .withDirection(Direction.NORTH).build();
+
+        new MoveCommand().execute(robot);
+
+        assertThat(robot.getPosition(), is(originalPosition));
     }
 }
