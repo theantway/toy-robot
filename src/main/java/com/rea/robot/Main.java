@@ -12,7 +12,7 @@ import java.io.Reader;
 /**
  * The main class to run toy-robot
  */
-public class Application {
+public class Main {
     public static void main(String[] args) {
         System.out.println("Welcome to Toy Robot's world, please input commands to control the robot.");
         play(new InputStreamReader(System.in));

@@ -12,14 +12,14 @@ import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.core.Is.is;
 
 @Test
-public class ApplicationTest {
+public class MainTest {
     public void should_execute_move_commands() {
         String commands = StringUtils.join(new String[]{"PLACE 0,0,NORTH",
                 "MOVE",
                 "REPORT"
         }, "\n");
 
-        Robot robot = Application.play(new StringReader(commands));
+        Robot robot = Main.play(new StringReader(commands));
 
         verifyPositionAndDirection(robot, 0, 1, Direction.NORTH);
     }
@@ -29,7 +29,7 @@ public class ApplicationTest {
                 "LEFT",
                 "REPORT"}, "\n");
 
-        Robot robot = Application.play(new StringReader(commands));
+        Robot robot = Main.play(new StringReader(commands));
 
         verifyPositionAndDirection(robot, 0, 0, Direction.WEST);
     }
@@ -42,7 +42,7 @@ public class ApplicationTest {
                 "MOVE",
                 "REPORT"}, "\n");
 
-        Robot robot = Application.play(new StringReader(commands));
+        Robot robot = Main.play(new StringReader(commands));
 
         verifyPositionAndDirection(robot, 3, 3, Direction.NORTH);
     }
