@@ -15,6 +15,10 @@ public class Robot {
         return position;
     }
 
+    public boolean isPlacedOnTable() {
+        return position != Position.NULL_POSITION;
+    }
+
     /**
      * The Robot <b>SHOULD NOT</b> fall off the table top,
      * caller of this method need to ensure the position is valid by tableTop.

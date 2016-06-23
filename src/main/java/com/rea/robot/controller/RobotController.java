@@ -3,7 +3,6 @@ package com.rea.robot.controller;
 import com.rea.robot.command.Command;
 import com.rea.robot.command.impl.PlaceCommand;
 import com.rea.robot.command.impl.PowerOffCommand;
-import com.rea.robot.domain.Position;
 import com.rea.robot.domain.Robot;
 import com.rea.robot.reader.CommandReader;
 
@@ -26,7 +25,7 @@ public class RobotController {
                 break;
             }
 
-            if (robot.getPosition() == Position.NULL_POSITION && !(command instanceof PlaceCommand)) {
+            if (!robot.isPlacedOnTable() && !(command instanceof PlaceCommand)) {
                 continue;
             }
 
