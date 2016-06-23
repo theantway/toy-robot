@@ -9,6 +9,7 @@ import org.testng.annotations.Test;
 
 import static com.rea.robot.builder.RobotBuilder.aRobot;
 import static org.hamcrest.MatcherAssert.assertThat;
+import static org.hamcrest.Matchers.nullValue;
 import static org.hamcrest.core.Is.is;
 
 @Test
@@ -52,13 +53,24 @@ public class RobotTest {
         verifyPositionAndDirection(robot, 0, 0, Direction.EAST);
     }
 
+    public void should_ignore_commands_before_place_to_table() {
+        Robot robot = aRobot().withCommandReader(new CommandReaderStub(
+                new MoveCommand(),
+                new LeftCommand())).build();
+
+        robot.executeCommands();
+
+        assertThat(robot.getPosition(), is(Position.NULL_POSITION));
+        assertThat(robot.getDirection(), nullValue());
+    }
+
     public void should_prevent_fall_off_the_tabletop() {
         Robot robot = aRobot().withCommandReader(new CommandReaderStub(
                 new PlaceCommand(-1, 0, Direction.NORTH))).build();
 
         robot.executeCommands();
 
-        assertThat(robot.getPosition(), is(Position.NullPosition));
+        assertThat(robot.getPosition(), is(Position.NULL_POSITION));
     }
 
     public void should_continue_execute_following_commands_after_ignored_invalid_position() {

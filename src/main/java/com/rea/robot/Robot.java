@@ -1,6 +1,7 @@
 package com.rea.robot;
 
 import com.rea.robot.command.Command;
+import com.rea.robot.command.PlaceCommand;
 import com.rea.robot.command.PowerOffCommand;
 import com.rea.robot.reader.CommandReader;
 
@@ -12,7 +13,7 @@ import com.rea.robot.reader.CommandReader;
  * Created by wxu on 6/23/16.
  */
 public class Robot {
-    private Position position = Position.NullPosition;
+    private Position position = Position.NULL_POSITION;
     private Direction direction;
     private TableTop tableTop;
     private CommandReader commandReader;
@@ -23,6 +24,10 @@ public class Robot {
 
             if (command instanceof PowerOffCommand) {
                 break;
+            }
+
+            if (position == Position.NULL_POSITION && !(command instanceof PlaceCommand)) {
+                continue;
             }
 
             command.execute(this);

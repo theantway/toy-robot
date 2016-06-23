@@ -7,7 +7,7 @@ package com.rea.robot;
  * Created by wxu on 6/23/16.
  */
 public class Position {
-    public static Position NullPosition = new Position(null, null);
+    public static final Position NULL_POSITION = new Position(null, null);
 
     private final Integer x;
     private final Integer y;

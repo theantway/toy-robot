@@ -27,7 +27,7 @@ public class PlaceCommandTest {
 
         new PlaceCommand(-1, 0, Direction.NORTH).execute(robot);
 
-        assertThat(robot.getPosition(), is(Position.NullPosition));
+        assertThat(robot.getPosition(), is(Position.NULL_POSITION));
         assertThat(robot.getDirection(), nullValue());
     }
 }
