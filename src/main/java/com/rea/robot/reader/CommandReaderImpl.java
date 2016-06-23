@@ -32,6 +32,7 @@ public class CommandReaderImpl implements CommandReader {
         commands.put("LEFT", new LeftCommand());
         commands.put("RIGHT", new RightCommand());
         commands.put("REPORT", new ReportCommand());
+        commands.put("POWEROFF", POWEROFF_COMMAND);
     }
 
     /**
@@ -40,13 +41,14 @@ public class CommandReaderImpl implements CommandReader {
      *         returns PowerOffCommand when no more data available in reader.
      */
     public Command nextCommand() {
+        String commandLine = null;
         try {
-            String commandLine = reader.readLine();
+            commandLine = reader.readLine();
             if (commandLine == null) {
                 return POWEROFF_COMMAND;
             }
 
-            String[] commandParts = commandLine.split(" |,");
+            String[] commandParts = commandLine.trim().split(" |,");
             String commandName = commandParts[0].toUpperCase();
 
             Command command = commands.get(commandName);
@@ -70,7 +72,7 @@ public class CommandReaderImpl implements CommandReader {
                 return NOOP_COMMAND;
             }
         } catch (IOException |IllegalArgumentException e) {
-            logger.warn("exception which occurred during read command", e);
+            logger.warn("exception which occurred during read command: " + commandLine);
 
             return NOOP_COMMAND;
         }

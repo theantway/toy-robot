@@ -18,6 +18,10 @@ public class Robot {
     private TableTop tableTop;
     private CommandReader commandReader;
 
+    public Robot(CommandReader commandReader) {
+        this.commandReader = commandReader;
+    }
+
     public void executeCommands() {
         while(true) {
             Command command = commandReader.nextCommand();

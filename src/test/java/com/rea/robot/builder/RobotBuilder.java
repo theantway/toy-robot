@@ -38,11 +38,7 @@ public class RobotBuilder {
     }
 
     public Robot build() {
-        Robot robot = new Robot();
-
-        if (commandReader != null) {
-            robot.setCommandReader(commandReader);
-        }
+        Robot robot = new Robot(commandReader);
 
         if (tableTop == null) {
             robot.setTableTop(new TableTop(5, 5));
