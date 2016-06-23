@@ -1,6 +1,6 @@
 package com.rea.robot.reader;
 
-import com.rea.robot.command.*;
+import com.rea.robot.command.impl.*;
 import org.testng.annotations.Test;
 
 import java.io.StringReader;

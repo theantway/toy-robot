@@ -1,5 +1,6 @@
-package com.rea.robot.command;
+package com.rea.robot.command.impl;
 
+import com.rea.robot.command.Command;
 import com.rea.robot.domain.Direction;
 import com.rea.robot.domain.Position;
 import com.rea.robot.domain.Robot;

@@ -1,5 +1,6 @@
-package com.rea.robot.command;
+package com.rea.robot.command.impl;
 
+import com.rea.robot.command.Command;
 import com.rea.robot.domain.Robot;
 
 /**
@@ -7,7 +8,7 @@ import com.rea.robot.domain.Robot;
  *
  * Created by wxu on 6/23/16.
  */
-public class RightCommand implements Command{
+public class RightCommand implements Command {
     @Override
     public void execute(Robot robot) {
         robot.setDirection(robot.getDirection().right());

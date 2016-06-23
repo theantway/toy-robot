@@ -5,13 +5,11 @@ import com.rea.robot.domain.Direction;
 import com.rea.robot.domain.Position;
 import com.rea.robot.domain.Robot;
 import com.rea.robot.domain.TableTop;
-import com.rea.robot.reader.CommandReader;
 
 public class RobotBuilder {
     private Position position;
     private Direction direction;
     private TableTop tableTop;
-    private CommandReader commandReader;
 
     public static RobotBuilder aRobot() {
         return new RobotBuilder();
@@ -32,13 +30,8 @@ public class RobotBuilder {
         return this;
     }
 
-    public RobotBuilder withCommandReader(CommandReader commandReader) {
-        this.commandReader = commandReader;
-        return this;
-    }
-
     public Robot build() {
-        Robot robot = new Robot(commandReader);
+        Robot robot = new Robot();
 
         if (tableTop == null) {
             robot.setTableTop(new TableTop(5, 5));

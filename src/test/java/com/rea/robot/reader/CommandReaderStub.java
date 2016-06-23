@@ -1,7 +1,7 @@
 package com.rea.robot.reader;
 
 import com.rea.robot.command.Command;
-import com.rea.robot.command.PowerOffCommand;
+import com.rea.robot.command.impl.PowerOffCommand;
 
 import java.util.Iterator;
 

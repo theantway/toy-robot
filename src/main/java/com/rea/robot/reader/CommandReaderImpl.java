@@ -1,6 +1,7 @@
 package com.rea.robot.reader;
 
-import com.rea.robot.command.*;
+import com.rea.robot.command.Command;
+import com.rea.robot.command.impl.*;
 import com.rea.robot.domain.Direction;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;

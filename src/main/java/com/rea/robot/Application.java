@@ -1,5 +1,6 @@
 package com.rea.robot;
 
+import com.rea.robot.controller.RobotController;
 import com.rea.robot.domain.Robot;
 import com.rea.robot.domain.TableTop;
 import com.rea.robot.reader.CommandReader;
@@ -25,9 +26,10 @@ public class Application {
      */
     protected static Robot play(Reader inputReader) {
         CommandReader commandReader = new CommandReaderImpl(inputReader);
-        Robot robot = new Robot(commandReader);
+        Robot robot = new Robot();
         robot.setTableTop(new TableTop(5, 5));
-        robot.executeCommands();
+
+        new RobotController(commandReader).executeCommands(robot);
 
         return robot;
     }
