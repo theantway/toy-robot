@@ -21,10 +21,10 @@ public class Application {
     /**
      * setup and run robot by reading commands from reader
      *
-     * @param inputReader
-     * @return robot
+     * @param inputReader to provide commands input
+     * @return robot object after execute all the commands.
      */
-    protected static Robot play(Reader inputReader) {
+    static Robot play(Reader inputReader) {
         CommandReader commandReader = new CommandReaderImpl(inputReader);
         Robot robot = new Robot();
         robot.setTableTop(new TableTop(5, 5));

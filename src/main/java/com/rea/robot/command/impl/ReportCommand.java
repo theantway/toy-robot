@@ -15,7 +15,7 @@ public class ReportCommand implements Command {
         System.out.println(positionAndDirection(position, robot.getDirection()));
     }
 
-    protected String positionAndDirection(Position position, Direction direction) {
+    private String positionAndDirection(Position position, Direction direction) {
         return position.getX() + ", " + position.getY() + ", " + direction;
     }
 }

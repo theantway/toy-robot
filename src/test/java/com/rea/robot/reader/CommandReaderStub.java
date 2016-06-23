@@ -13,7 +13,7 @@ import static java.util.Arrays.asList;
  * Created by wxu on 6/23/16.
  */
 public class CommandReaderStub implements CommandReader {
-    private Iterator<Command> commandsIterator;
+    private final Iterator<Command> commandsIterator;
 
     public CommandReaderStub(Command... commands) {
         this.commandsIterator = asList(commands).iterator();
