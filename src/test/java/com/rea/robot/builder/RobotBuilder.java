@@ -5,11 +5,13 @@ import com.rea.robot.Direction;
 import com.rea.robot.Position;
 import com.rea.robot.Robot;
 import com.rea.robot.TableTop;
+import com.rea.robot.reader.CommandReader;
 
 public class RobotBuilder {
     private Position position;
     private Direction direction;
     private TableTop tableTop;
+    private CommandReader commandReader;
 
     public static RobotBuilder aRobot() {
         return new RobotBuilder();
@@ -30,8 +32,17 @@ public class RobotBuilder {
         return this;
     }
 
+    public RobotBuilder withCommandReader(CommandReader commandReader) {
+        this.commandReader = commandReader;
+        return this;
+    }
+
     public Robot build() {
         Robot robot = new Robot();
+
+        if (commandReader != null) {
+            robot.setCommandReader(commandReader);
+        }
 
         if (tableTop == null) {
             robot.setTableTop(new TableTop(5, 5));
@@ -49,4 +60,5 @@ public class RobotBuilder {
 
         return robot;
     }
+
 }

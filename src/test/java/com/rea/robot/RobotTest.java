@@ -4,6 +4,7 @@ import com.rea.robot.command.LeftCommand;
 import com.rea.robot.command.MoveCommand;
 import com.rea.robot.command.PlaceCommand;
 import com.rea.robot.command.RightCommand;
+import com.rea.robot.reader.CommandReaderStub;
 import org.testng.annotations.Test;
 
 import static com.rea.robot.builder.RobotBuilder.aRobot;
@@ -43,6 +44,16 @@ public class RobotTest {
 
         robot.executeCommand(new PlaceCommand(0, 0, Direction.NORTH));
         robot.executeCommand(new RightCommand());
+
+        verifyPositionAndDirection(robot, 0, 0, Direction.EAST);
+    }
+
+    public void should_able_to_execute_commands() {
+        Robot robot = aRobot().withCommandReader(new CommandReaderStub(
+                new PlaceCommand(0, 0, Direction.NORTH),
+                new RightCommand())).build();
+
+        robot.executeCommands();
 
         verifyPositionAndDirection(robot, 0, 0, Direction.EAST);
     }

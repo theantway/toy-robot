@@ -1,6 +1,8 @@
 package com.rea.robot;
 
 import com.rea.robot.command.Command;
+import com.rea.robot.command.PowerOffCommand;
+import com.rea.robot.reader.CommandReader;
 
 
 /**
@@ -13,6 +15,19 @@ public class Robot {
     private Position position = Position.NullPosition;
     private Direction direction;
     private TableTop tableTop;
+    private CommandReader commandReader;
+
+    public void executeCommands() {
+        while(true) {
+            Command command = commandReader.nextCommand();
+
+            if (command instanceof PowerOffCommand) {
+                break;
+            }
+
+            command.execute(this);
+        }
+    }
 
     public void executeCommand(Command command) {
         command.execute(this);
@@ -54,5 +69,9 @@ public class Robot {
 
     public TableTop getTableTop() {
         return tableTop;
+    }
+
+    public void setCommandReader(CommandReader commandReader) {
+        this.commandReader = commandReader;
     }
 }
