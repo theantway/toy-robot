@@ -19,7 +19,7 @@ public class MoveCommand implements Command {
 
         if (!robot.getTableTop().isInTableArea(newPosition))
         {
-            logger.info("Ignored invalid position");
+            logger.debug("Ignored invalid position");
             return;
         }
 

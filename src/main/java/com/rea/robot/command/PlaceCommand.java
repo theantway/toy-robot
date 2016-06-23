@@ -29,7 +29,7 @@ public class PlaceCommand implements Command {
 
         if (!robot.getTableTop().isInTableArea(position))
         {
-            logger.info("Ignored invalid position");
+            logger.debug("Ignored invalid position");
             return;
         }
 

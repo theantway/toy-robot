@@ -1,7 +1,9 @@
 package com.rea.robot;
 
+import com.rea.robot.command.LeftCommand;
 import com.rea.robot.command.MoveCommand;
 import com.rea.robot.command.PlaceCommand;
+import com.rea.robot.command.RightCommand;
 import org.testng.annotations.Test;
 
 import static com.rea.robot.builder.RobotBuilder.aRobot;
@@ -25,6 +27,24 @@ public class RobotTest {
         robot.executeCommand(new MoveCommand());
 
         verifyPositionAndDirection(robot, 0, 1, Direction.NORTH);
+    }
+
+    public void should_able_to_turn_left() {
+        Robot robot = aRobot().build();
+
+        robot.executeCommand(new PlaceCommand(0, 0, Direction.NORTH));
+        robot.executeCommand(new LeftCommand());
+
+        verifyPositionAndDirection(robot, 0, 0, Direction.WEST);
+    }
+
+    public void should_able_to_turn_right() {
+        Robot robot = aRobot().build();
+
+        robot.executeCommand(new PlaceCommand(0, 0, Direction.NORTH));
+        robot.executeCommand(new RightCommand());
+
+        verifyPositionAndDirection(robot, 0, 0, Direction.EAST);
     }
 
     public void should_prevent_fall_off_the_tabletop() {
