@@ -27,6 +27,12 @@ public class MoveCommand implements Command {
         robot.setPosition(newPosition);
     }
 
+    /**
+     * return the next position based on current position and direction
+     * @param direction current direction
+     * @param position current position
+     * @return the next position
+     */
     private Position nextPosition(Direction direction, Position position) {
         switch (direction) {
             case NORTH:

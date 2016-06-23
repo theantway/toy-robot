@@ -10,6 +10,9 @@ public enum Direction {
     SOUTH,
     WEST;
 
+    /**
+     * @return the left Direction of the current
+     */
     public Direction left() {
         switch (this) {
             case NORTH: return WEST;
@@ -21,6 +24,9 @@ public enum Direction {
         }
     }
 
+    /**
+     * @return the right Direction of the current
+     */
     public Direction right() {
         switch (this) {
             case NORTH: return EAST;

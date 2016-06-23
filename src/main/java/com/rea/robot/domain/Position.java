@@ -9,7 +9,14 @@ package com.rea.robot.domain;
 public class Position {
     public static final Position NULL_POSITION = new Position(null, null);
 
+    /**
+     * position in x-axis
+     */
     private final Integer x;
+
+    /**
+     * position in y-axis
+     */
     private final Integer y;
 
     public Position(Integer x, Integer y) {

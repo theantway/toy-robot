@@ -13,6 +13,11 @@ public class TableTop {
         this.length = length;
     }
 
+    /**
+     * check if a position is in area of the tabletop
+     * @param position to check
+     * @return true if in table area, else false
+     */
     public boolean isInTableArea(Position position) {
         return position.getX() >= 0 && position.getX() < width
                 && position.getY() >= 0 && position.getY() < length;

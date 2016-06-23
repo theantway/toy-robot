@@ -7,7 +7,7 @@ import com.rea.robot.domain.Robot;
 import com.rea.robot.reader.CommandReader;
 
 /**
- * Read commands and execute on robot
+ * Read commands and execute on robot. This class kind of like the heart of the robot, receive commands and execute them.
  * Created by wxu on 6/23/16.
  */
 public class RobotController {
@@ -17,6 +17,11 @@ public class RobotController {
         this.commandReader = commandReader;
     }
 
+    /**
+     * execute commands read from commandReader until read a POWEROFF command or there's no more Command available.
+     * @param robot the robot to control
+     * @return robot with updated status
+     */
     public Robot executeCommands(Robot robot) {
         while(true) {
             Command command = commandReader.nextCommand();

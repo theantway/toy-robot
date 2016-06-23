@@ -15,6 +15,9 @@ public class Robot {
         return position;
     }
 
+    /**
+     * @return true if the robot had been placed on table, else false
+     */
     public boolean isPlacedOnTable() {
         return position != Position.NULL_POSITION;
     }
