@@ -10,6 +10,7 @@ import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.Reader;
 import java.util.HashMap;
+import java.util.Locale;
 import java.util.Map;
 
 /**
@@ -49,8 +50,8 @@ public class CommandReaderImpl implements CommandReader {
                 return POWEROFF_COMMAND;
             }
 
-            String[] commandParts = commandLine.trim().split(" |,");
-            String commandName = commandParts[0].toUpperCase();
+            String[] commandParts = commandLine.trim().toUpperCase(Locale.ENGLISH).split(" |,");
+            String commandName = commandParts[0];
 
             Command command = commands.get(commandName);
             if (command != null) {

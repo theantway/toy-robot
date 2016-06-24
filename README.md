@@ -14,14 +14,16 @@ You can choose either way of the following method:
 2. To create a executable jar file with dependencies included. then you can run by:
 ```bash
     cd {PROJECT_ROOT_DIR}
-    mvn clean package
+    mvn clean package site
     java -jar target/toy-robot-1.0-SNAPSHOT-jar-with-dependencies.jar
 ```
 
 Code Quality
 ------------
-Using TestNG for unit tests, and jacoco for code coverage. You can find the code coverage report at target/site/jacoco after mvn test.
-    
+- Using TestNG for unit tests.
+- Using Jacoco for code coverage. The code coverage report can be found at target/site/jacoco after mvn test.
+- Using FindBugs for code quality.
+
 How to Play
 -----------
 Input commands to control robot after you started the application. Supported commands:
