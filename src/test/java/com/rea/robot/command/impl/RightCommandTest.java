@@ -13,7 +13,7 @@ import static org.hamcrest.core.Is.is;
 public class RightCommandTest {
     public void should_execute_command() {
         Position position = new Position(0, 0);
-        Robot robot = aRobot().withPosition(position).withDirection(Direction.EAST).build();
+        Robot robot = aRobot().withPositionAndDirection(position, Direction.EAST).build();
 
         new RightCommand().execute(robot);
 

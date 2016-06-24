@@ -27,8 +27,7 @@ public class MoveCommandTest {
     @Test(dataProvider = "positions")
     public void should_execute_command(int x, int y, Direction direction, int newX, int newY) {
         Robot robot = aRobot()
-                .withPosition(new Position(x, y))
-                .withDirection(direction).build();
+                .withPositionAndDirection(new Position(x, y), direction).build();
 
         new MoveCommand().execute(robot);
 
@@ -38,8 +37,7 @@ public class MoveCommandTest {
 
     public void should_prevent_fall_off_table() {
         Robot robot = aRobot().withTableTop(new TableTop(5, 5))
-                .withPosition(new Position(4, 4))
-                .withDirection(Direction.NORTH).build();
+                .withPositionAndDirection(new Position(4, 4), Direction.NORTH).build();
 
         new MoveCommand().execute(robot);
 

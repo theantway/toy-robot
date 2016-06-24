@@ -1,5 +1,8 @@
 package com.rea.robot.domain;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
 /**
  * The Robot class can be placed to a specific position on a table top, then execute commands.
  * The Robot SHOULD NOT fall off the table top
@@ -7,12 +10,22 @@ package com.rea.robot.domain;
  * Created by wxu on 6/23/16.
  */
 public class Robot {
+    private static final Logger logger = LoggerFactory.getLogger(Robot.class);
+
     private Position position = Position.NULL_POSITION;
     private Direction direction;
     private TableTop tableTop;
 
     public Position getPosition() {
         return position;
+    }
+
+    public Direction getDirection() {
+        return direction;
+    }
+
+    public void setTableTop(TableTop tableTop) {
+        this.tableTop = tableTop;
     }
 
     /**
@@ -26,33 +39,25 @@ public class Robot {
      * The Robot <b>SHOULD NOT</b> fall off the table top,
      * caller of this method need to ensure the position is valid by tableTop.
      *
-     * @param position new robot position, throws IllegalArgumentException if position not inside the tabletop
+     * @param position new robot position, ignored if the new position is out of the tabletop's area
+     * @param direction new direction
      */
-    public void setPosition(Position position) {
+    public void changePositionAndDirection(Position position, Direction direction) {
         if (tableTop == null) {
-            throw new RuntimeException("Robot not associated with a tabletop");
+            throw new IllegalStateException("Robot not associated with a tabletop");
         }
 
-        if (!tableTop.isInTableArea(position)) {
-            throw new IllegalArgumentException("New position is outside the table top");
+        if (direction == null) {
+            throw new IllegalArgumentException("Direction should not be null");
+        }
+
+        if (!tableTop.isInTableArea(position))
+        {
+            logger.debug("Ignored unsafe position");
+            return;
         }
 
         this.position = position;
-    }
-
-    public Direction getDirection() {
-        return direction;
-    }
-
-    public void setDirection(Direction direction) {
         this.direction = direction;
-    }
-
-    public void setTableTop(TableTop tableTop) {
-        this.tableTop = tableTop;
-    }
-
-    public TableTop getTableTop() {
-        return tableTop;
     }
 }

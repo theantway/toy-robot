@@ -15,18 +15,14 @@ public class RobotBuilder {
         return new RobotBuilder();
     }
 
-    public RobotBuilder withPosition(Position position) {
+    public RobotBuilder withPositionAndDirection(Position position, Direction direction) {
         this.position = position;
+        this.direction = direction;
         return this;
     }
 
     public RobotBuilder withTableTop(TableTop tableTop) {
         this.tableTop = tableTop;
-        return this;
-    }
-
-    public RobotBuilder withDirection(Direction direction) {
-        this.direction = direction;
         return this;
     }
 
@@ -40,11 +36,7 @@ public class RobotBuilder {
         }
 
         if (position != null) {
-            robot.setPosition(position);
-        }
-
-        if (direction != null) {
-            robot.setDirection(direction);
+            robot.changePositionAndDirection(position, direction);
         }
 
         return robot;

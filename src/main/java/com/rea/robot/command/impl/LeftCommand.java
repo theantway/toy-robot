@@ -11,6 +11,6 @@ import com.rea.robot.domain.Robot;
 public class LeftCommand implements Command {
     @Override
     public void execute(Robot robot) {
-        robot.setDirection(robot.getDirection().left());
+        robot.changePositionAndDirection(robot.getPosition(), robot.getDirection().left());
     }
 }
